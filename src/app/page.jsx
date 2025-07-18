@@ -1,20 +1,21 @@
 "use client";
 
 import axios from "axios";
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
-  const { status } = useSession();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchUsers() {
       try {
         const response = await axios.get("/api/users");
         setUsers(response.data.data);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error("Error fetching users:", error);
       }
     }
@@ -22,7 +23,7 @@ export default function Home() {
     fetchUsers();
   }, []);
 
-  return status === "loading" ? (
+  return loading ? (
     <div className="w-full max-w-5xl overflow-x-auto pt-20 mx-auto px-4 animate-pulse">
       <table className="min-w-full border-collapse text-sm sm:text-base bg-[#1e1e2f] text-white shadow-xl rounded-xl overflow-hidden">
         <thead className="bg-[#2a2a40] text-left">
