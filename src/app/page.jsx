@@ -61,7 +61,7 @@ export default function Home() {
         Welcome to Student Fee Management
       </h1>
       {/* Student Table */}
-      <div className="w-full max-w-5xl overflow-x-auto pt-40 sm:pt-20 mx-auto px-4">
+      <div className="w-full max-w-5xl overflow-x-auto pt-40 sm:pt-20 mx-auto ">
         <table className="min-w-full border-collapse text-sm sm:text-base bg-[#1e1e2f] text-white shadow-xl rounded-xl overflow-hidden">
           <thead className="bg-[#2a2a40] text-left">
             <tr>
